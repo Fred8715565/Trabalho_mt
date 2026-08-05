@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulheres que Fizeram História</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo">Histórias<span class="dot">.</span></div>
+    <nav class="nav-links">
+      <a href="#hero">Início</a>
+      <a href="#bio">Biografia</a>
+      <a href="#strip">Perfis</a>
+      <a href="#">Sobre</a>
+    </nav>
+    <div class="nav-right">
+      <span class="nav-tag">Mulheres Brasileiras</span>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <div class="eyebrow">Mulheres que fizeram história</div>
+      <h1 class="hero-title fade-target" id="heroTitle">Bem-vindas à
+        <span class="name" id="heroName">Nise da Silveira</span>
+      </h1>
+      <div class="hero-kicker fade-target" id="heroKicker">Psiquiatra e humanista</div>
+      <p class="hero-teaser fade-target" id="heroTeaser"></p>
+      <button class="cta" onclick="scrollToBio()">Continue lendo <span class="arrow">&#8594;</span></button>
+    </div>
+
+    <div class="hero-right">
+      <div class="categories">
+        <div class="cat-label">Categorias</div>
+        <a href="#" data-cat="Ciência &amp; Medicina" class="cat-link">Ciência &amp; Medicina</a>
+        <a href="#" data-cat="Ativismo Indígena" class="cat-link">Ativismo Indígena</a>
+        <a href="#" data-cat="Música &amp; Cultura" class="cat-link">Música &amp; Cultura</a>
+        <a href="#" data-cat="Direitos Humanos" class="cat-link">Direitos Humanos</a>
+        <a href="#" data-cat="Política &amp; Cidadania" class="cat-link">Política &amp; Cidadania</a>
+        <a href="#" class="browse-all">Ver todas &#8594;</a>
+      </div>
+
+      <div class="portrait-frame fade-target" id="portraitFrame"></div>
+      <div class="portrait-caption fade-target" id="portraitCaption">
+        <b id="captionName">Nise da Silveira</b>
+        <span id="captionRole">Psiquiatra — 1905–1999</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio-section" id="bio">
+    <div class="bio-panel">
+      <div class="bio-side fade-target" id="bioSide">
+        <div class="bio-side-top">
+          <div class="bio-index" id="bioIndex">01 &mdash; Cinco</div>
+          <h3 id="bioSideName">Nise da Silveira</h3>
+          <p id="bioSideRole">Psiquiatra e humanista</p>
+        </div>
+        <div class="bio-meta">
+          <span>Área <b id="metaCat">Ciência &amp; Medicina</b></span>
+          <span>Legado <b id="metaLegacy">Reforma psiquiátrica</b></span>
+        </div>
+      </div>
+      <div class="bio-body-wrap">
+        <div class="bio-body fade-target" id="bioBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip-section" id="strip">
+    <div class="strip" id="stripList"></div>
+  </section>
+
+  <footer>
+    <span>Histórias &mdash; retratos editoriais</span>
+    <span id="footerCounter">01 / 05</span>
+  </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>
