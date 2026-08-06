@@ -26,19 +26,33 @@ function motifOverlaySVG(motifKind, seed){
   </svg>`;
 }
 
-/* large hero portrait: real photo + duotone tint */
+/* initials used as a graceful fallback when a photo is missing/broken */
+function initials(name){
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0][0];
+  const last = parts[parts.length - 1][0];
+  return (first + last).toUpperCase();
+}
+
+/* large hero portrait: real photo + duotone tint, with fallback if the image fails */
 function portraitPhoto(photoSrc, motifKind, name, seed, focus){
   const focusAttr = focus ? ` style="--focus:${focus}"` : '';
   return `
-    <img class="portrait-img" src="${photoSrc}" alt="Retrato de ${name}"${focusAttr}>
+    <img class="portrait-img" src="${photoSrc}" alt="Retrato de ${name}"${focusAttr}
+      onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
     <div class="portrait-tint"></div>
+    <div class="portrait-fallback"><span>${initials(name)}</span></div>
   `;
 }
 
-/* small round thumbnail for the numbered strip */
+/* small round thumbnail for the numbered strip, with fallback if the image fails */
 function thumbPhoto(photoSrc, name, focus){
   const focusAttr = focus ? ` style="--focus:${focus}"` : '';
-  return `<img class="thumb-img" src="${photoSrc}" alt="Retrato de ${name}"${focusAttr}>`;
+  return `
+    <img class="thumb-img" src="${photoSrc}" alt="Retrato de ${name}"${focusAttr}
+      onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
+    <div class="thumb-fallback"><span>${initials(name)}</span></div>
+  `;
 }
 
 /* ---------- data ---------- */
@@ -195,12 +209,30 @@ document.querySelectorAll('.cat-link').forEach(a=>{
     e.preventDefault();
     const idx = profiles.findIndex(p=>p.category===a.dataset.cat);
     if(idx>-1) selectProfile(idx);
+    closeMenu();
   });
 });
 
 function scrollToBio(){
   document.getElementById('bio').scrollIntoView({behavior:'smooth', block:'start'});
 }
+
+/* ---------- mobile menu (burger) ---------- */
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+
+function closeMenu(){
+  navLinks.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+}
+function toggleMenu(){
+  const isOpen = navLinks.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+burger.addEventListener('click', toggleMenu);
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
 
 buildStrip();
 render(0);
